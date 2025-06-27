@@ -394,6 +394,18 @@ footer p {
     color: var(--font-color-muted);
 }
 
+/* --- Hamburger Menu --- */
+.hamburger-menu {
+    display: none; /* Hidden by default, shown on mobile */
+    background: none;
+    border: none;
+    color: var(--font-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001; /* Ensure it's above other navbar items if overlap occurs */
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     .hero {
@@ -409,32 +421,86 @@ footer p {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 70px; /* Adjust for potentially smaller navbar */
+        /* Adjusted padding-top to match typical collapsed navbar height */
+        /* The .navbar itself has 1rem top/bottom padding, logo is 1.6rem font. */
+        /* Total height roughly 2 * 1rem (padding) + 1.6rem (logo) = 3.6rem. Let's use ~60px or a bit more. */
+        padding-top: 65px;
     }
+
     .navbar .container {
-        flex-direction: column;
-        align-items: flex-start;
+        /* Ensure .navbar .container does NOT become flex-direction: column here. */
+        /* It should remain row to keep logo and hamburger side-by-side. */
+        /* Default display:flex and align-items:center from desktop is fine. */
+        /* justify-content: space-between; from desktop is also fine. */
     }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger */
+        order: 3; /* Ensure hamburger is typically on the right of nav links if they were visible */
+    }
+
     .navbar .nav-links {
-        margin-top: 1rem;
+        display: none; /* Hide nav links by default on mobile */
+        order: 4; /* After hamburger if it was part of the flex row */
+
+        /* Styles for when it becomes active (dropdown) */
         flex-direction: column;
         width: 100%;
+        background-color: var(--surface-color);
+        position: absolute;
+        top: 100%; /* Position below the navbar (relative to .navbar's bottom) */
+        left: 0;
+        padding: 0; /* Remove padding from ul itself, apply to li a */
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 4px 10px var(--shadow-color);
+        z-index: 1000; /* Ensure dropdown is above other content */
     }
+
+    .navbar .nav-links.nav-active {
+        display: flex; /* Show when active */
+    }
+
     .navbar .nav-links li {
-        margin-bottom: 0.5rem;
+        width: 100%;
+        text-align: left; /* Align text to the left for typical dropdown feel */
+        margin-bottom: 0;
     }
+
     .navbar .nav-links li a {
         display: block;
-        padding: 0.8rem 0;
+        padding: 0.9rem 1.5rem; /* Padding for tappable area */
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.95rem; /* Slightly adjust font size for mobile menu */
+        color: var(--font-color); /* Ensure default color is applied */
     }
+
+    .navbar .nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    .navbar .nav-links li a.active,
+    .navbar .nav-links li a:hover {
+        background-color: var(--primary-color);
+        color: #111;
+        transform: scale(1);
+    }
+
+    .navbar .nav-links li a.active::after, /* Remove desktop underline artifacts */
+    .navbar .nav-links li a:hover::after {
+        width: 0;
+        height: 0;
+    }
+
     .navbar .social-links {
-        margin-top: 1rem;
-        margin-left: 0; /* Reset margin */
+        /* Hide social links that were part of the desktop row */
+        display: none;
     }
-    .navbar .social-links a {
-        margin-left: 0;
-        margin-right: 1.2rem;
-    }
+    /* If social links need to be in the mobile menu, they should be part of the .nav-links ul in HTML */
+    /* or handled separately by JS and styled similarly to .nav-links.nav-active */
+
+    /* Previous styles that caused full stacking of .navbar .container are removed or overridden. */
+    /* E.g., .navbar .container { flex-direction: column; align-items: flex-start; } is NOT used. */
 
     .hero {
         flex-direction: column;
