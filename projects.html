@@ -1,479 +1,87 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Johnny Yu's Portfolio</title>
-
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/fontawesome/css/all.css" rel="stylesheet" />
-<link href="site_libs/fontawesome/css/v4-shims.css" rel="stylesheet" />
-
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:50%;
-}
-.tabbed-pane {
-  padding-top: 120px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-
-.rightside {
-  float: right;
-  position: relative;
-  top: 70px;
-  left: 0px;
-  width: 550px;
-  height: 5px;
-  font-size: 18px;
-
-}
-
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Johnny Yu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Johnny Yu</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="internships.html">Experience</a></li>
+                <li><a href="CV.html">Resume</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://github.com/johnnyyu14" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/johnnyyu14/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:johnnyyu14@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
 
-<div class="container-fluid main-container">
+    <main>
+        <section class="section container">
+            <h1>Academic & Personal Projects</h1>
+            <p>A collection of my work in data analysis, machine learning, and visualization.</p>
 
+            <div class="card-grid">
+                <!-- COVID-19 Project -->
+                <div class="card" id="covid-project">
+                    <h3>Forecasting Short Term COVID-19 cases <i class="fab fa-python"></i></h3>
+                    <div class="tags">
+                        <span class="tag">Time-Series</span><span class="tag">Decision Tree</span><span class="tag">SVR</span><span class="tag">Regression</span>
+                    </div>
+                    <p>Created two time-series models to predict daily COVID cases in CA counties. While the models did not achieve high accuracy, the project was a deep-dive into the challenges of feature selection and model limitations with real-world, noisy data.</p>
+                    <div class="card-footer">
+                        <a href="docs/data_preparation.pdf" target="_blank"><i class="fas fa-file-alt"></i> Data Prep</a>
+                        <a href="docs/time_series.pdf" target="_blank"><i class="fas fa-file-alt"></i> Modeling</a>
+                        <a href="docs/PSTAT_197A_Final_Project_Poster.pdf" target="_blank"><i class="fas fa-file-image"></i> Poster</a>
+                    </div>
+                </div>
 
+                <!-- UFO Project -->
+                <div class="card">
+                    <h3>UFO Sightings Analysis (1914-2010) <i class="fab fa-python"></i></h3>
+                    <div class="tags">
+                        <span class="tag">Data Visualization</span><span class="tag">Pandas</span><span class="tag">Geo-analysis</span>
+                    </div>
+                    <p>Analyzed a dataset of UFO sightings reported by the US Government. Used scatterplots, correlation matrices, and PCA to visualize report densities and investigate relationships between variables like shape, time of day, and location.</p>
+                    <div class="card-footer">
+                        <a href="docs/tidy UFO.pdf" target="_blank"><i class="fas fa-file-alt"></i> Data Tidy</a>
+                        <a href="docs/UFO Sighting final report.pdf" target="_blank"><i class="fas fa-file-alt"></i> Final Report</a>
+                    </div>
+                </div>
 
+                <!-- Election Project -->
+                <div class="card">
+                    <h3>Predicting the 2016 Election <i class="fab fa-r-project"></i></h3>
+                    <div class="tags">
+                        <span class="tag">Classification</span><span class="tag">Random Forest</span><span class="tag">K-Means</span>
+                    </div>
+                    <p>Utilized voter demographic data to predict county-level election outcomes. Compared various models (Logistic Regression, Random Forest, AdaBoost) achieving up to 92.2% accuracy. Used K-Means to identify distinct demographic clusters.</p>
+                    <div class="card-footer">
+                        <a href="docs/project-stage2.pdf" target="_blank"><i class="fas fa-file-alt"></i> Code & Report</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Johnny Yu's Website</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">
-    <span class="fa-solid fa-house-chimney"></span>
-     
-    Home
-  </a>
-</li>
-<li>
-  <a href="projects.html">
-    <span class="fa fa-folder-open"></span>
-     
-    Projects
-  </a>
-</li>
-<li>
-  <a href="Internships.html">
-    <span class="fa-solid fa-laptop-file"></span>
-     
-    Internships
-  </a>
-</li>
-<!--<li>
-  <a href="research.html">
-    <span class="fa fa-flask"></span>
-     
-    Research
-  </a>
-</li>
-<li>
-  <a href="geog176A.html">
-    <span class="fa fa-globe"></span>
-     
-    GIS Work
-  </a>
-</li>-->
-<li>
-  <a href="CV.html">
-    <span class="fa fa-file"></span>
-     
-    Resume
-  </a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/johnnyyu14">
-    <span class="fa fa-github"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://www.linkedin.com/in/johnnyyu14/">
-    <span class="fa fa-linkedin"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="mailto:johnnyyu14@gmail.com">
-    <span class="fa fa-envelope-square"></span>
-     
-  </a>
-</li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
-
-<div class="fluid-row" id="header">
-
-</div>
-
-
-<hr />
-<div id="forecasting-short-term-COVID 19-cases" class="section level2">
-<h2>Forecasting Short Term COVID-19-cases <i class="fab fa-python"></I></h2>
-<p>Goal:</p>
-<ul>
-<li>Create two time-series forecasting models that predicts the number of new daily COVID cases in each county.</li>
-<li>Models were trained on the estimated percentage of outpatient doctor visits with confirmed COVID, outpatient doctor visits primarily about COVID-related symptoms, and new hospital admissions with COVID-associated diagnoses: all for 15 counties in California from March 1st, 2020 to March 1st, 2021.<br />
-</li>
-<li>Created both an interpretable model in a decision tree regression model as well as a more complex model in a support vector regression model.</li>
-</ul>
-<p>Conclusion:</p>
-<ul>
-<li>Decision Tree Regressor testing RMSE was 908.86 and its R-squared value was approximately 0.57.</li>
-<li>Support Vector Regressor produced a testing RMSE of 1403.20 and an R-squared value of approximately -0.025.</li>
-<li>Neither model accurately predicted the number of new daily COVID cases per county using historical data due to wide range of values of the original dataset in addition to the features simply not being good predictors of new COVID cases.</li>
-<li>Decision tree performed much better than the SVR model as it was able to capture the overall trend in the rise and fall of new daily COVID cases.</li>
-</ul>
-<p><font size="4"> Python notebook containing code and outputs for <strong>data preparation</strong> can be found <a href="docs/data_preparation.pdf">here</a>.</p>
-<p>Python notebook containing code and outputs for <strong>model tuning, training, and evaluation</strong> <a href="docs/time_series.pdf">here</a>.</p>
-<p><strong>Final Report</strong> for the project can be found <a href="docs/197A Summary.pdf">here</a>.</p>
-<p><strong>Final Poster</strong> can be found <a href="docs/PSTAT_197A_Final_Project_Poster.pdf">here</a>. </font></p>
-<center>
-<img src="docs/PSTAT_197A_Final_Project_Poster-1.png" />
-</center>
-
-<hr />
-<div id="ufo-sightings-1914-2010-reported-us-government" class="section level2">
-<h2>UFO Sightings 1914-2010 reported by US Government <i class="fab fa-python"></I></h2>
-<p>Goal:</p>
-<ul>
-<li>Use scatterplots with weighted symbology to relate density of UFO sighting reports, and group by year, time of day, or by region or other qualities to visualize densities of reports in different contexts.</li>
-<li>Investigate the densities of reports based on these other qualitative variables, and then use correlation matrices to investigate the correlation between variables such as shape, encounter length, time of day, etc, and principal components analysis to understand the covariation.</li>
-</ul>
-<p>Conclusion:</p>
-<ul>
-<li>When exploring density in reports made throughout the years, it reveals a drastic increase in reports made after the early 90s suggesting more widespread internet use has made it easier and quicker to submit reports to the NUFORC.</li>
-<li>The spatial distribution of the UFO sightings revealed an interesting change between the before and after 2000 time periods, where Southern California sightings became more frequent. This change could mostly be explained by the increases in population that Southern California has experienced in the past century.</li>
-<li>The fact that most reports are made at night, and the major increases in the density of UFO shapes, light, after the year 2000 could be explained by global technological advances, wherein increased use of satellites, planes, and advanced aerial technology could explain increases in sightings of these types.</li>
-<li>Further topics to be investigated may include exploring specific technological advances in satellites and planes that could explain rises in UFO reports. Location may also have an effect on reports made, the findings show that most reports were made from the highly populated areas of Los Angeles and San Francisco.</li>
-</ul>
-<p><font size="4"> Python notebook containing code and outputs for <strong>Tidying Data</strong> can be found <a href="docs/tidy UFO.pdf">here</a>.</p>
-<p><strong>Final Report</strong> for the project can be found <a href="docs/UFO Sighting final report.pdf">here</a>.</p>
-<center>
-<img src="docs/UFO.PNG" />
-</center>
-
-<hr />
-</div>
-<div id="predicting-the-2016-presidential-election-using-demographic-data" class="section level2">
-<h2>Predicting the 2016 Election using Voter Demographics<i class="fab fa-r-project"></I></h2>
-<p>Goal #1: Predicting whether or not Donald Trump would win a specific county</p>
-<ul>
-<li>Linear Regression: 0.09 RMSE / Predicted Trump would win 548/613 counties in the test dataset which is 21 more than he actually won.</li>
-<li>Logistic Regression: 91.4% Accuracy.</li>
-<li>Random Forest: 92.2% Accuracy.</li>
-<li>Adaptive Boosting: 92% Accuracy.</li>
-</ul>
-<p>Goal #2: Use K-Means clustering to cluster our data and see if there were any distinct groups driven by specific demographic variables</p>
-<ul>
-<li>Top two clusters that had the highest percentage of counties vote for Trump, were also predominantly white and wealthy.</li>
-<li>The cluster with the lowest percentage of counties that voted for Trump was driven by a higher population of minorities and individuals with lower income per capita.</li>
-</ul>
-<center>
-<font size="4"> <a href="docs/project-stage2.pdf">Code and Report</a> </font>
-</center>
-<center>
-<img src="docs/Demo_data.PNG" />
-</center>
-<center>
-<a href="mailto:johnnyyu14@gmail.com" class="email">johnnyyu14@gmail.com</a>
-</center>
-</div>
-
-
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+    <footer>
+        <div class="container">
+            <p>© 2024 Johnny Yu. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
