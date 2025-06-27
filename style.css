@@ -396,7 +396,7 @@ footer p {
 
 /* --- Hamburger Menu --- */
 .hamburger-menu {
-    display: none; /* Hidden by default, shown on mobile */
+    display: none; /* Hidden by default, shown on mobile - REMOVED !important */
     background: none;
     border: none;
     color: var(--font-color);
@@ -423,14 +423,15 @@ footer p {
     body {
         /* Adjusted padding-top to match typical collapsed navbar height */
         /* The .navbar itself has 1rem top/bottom padding, logo is 1.6rem font. */
-        /* Total height roughly 2 * 1rem (padding) + 1.6rem (logo) = 3.6rem. Let's use ~60px or a bit more. */
-        padding-top: 65px;
+        /* Approx height = 1rem + 1.6rem + 1rem = 3.6rem. If 1rem = 16.5px, then ~59.4px. Rounded to 60px. */
+        padding-top: 60px; /* REMOVED !important */
     }
 
     .navbar .container {
         /* Ensure .navbar .container does NOT become flex-direction: column here. */
         /* It should remain row to keep logo and hamburger side-by-side. */
-        /* Default display:flex and align-items:center from desktop is fine. */
+        flex-direction: row !important; /* REINSTATED !important */
+        align-items: center !important; /* REINSTATED !important */
         /* justify-content: space-between; from desktop is also fine. */
     }
 
@@ -440,7 +441,7 @@ footer p {
     }
 
     .navbar .nav-links {
-        display: none; /* Hide nav links by default on mobile */
+        display: none; /* Hide nav links by default on mobile - REMOVED !important */
         order: 4; /* After hamburger if it was part of the flex row */
 
         /* Styles for when it becomes active (dropdown) */
@@ -494,7 +495,7 @@ footer p {
 
     .navbar .social-links {
         /* Hide social links that were part of the desktop row */
-        display: none;
+        display: none; /* REMOVED !important */
     }
     /* If social links need to be in the mobile menu, they should be part of the .nav-links ul in HTML */
     /* or handled separately by JS and styled similarly to .nav-links.nav-active */
