@@ -24,14 +24,15 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background-color);
   color: var(--font-color);
-  line-height: 1.7;
+  line-height: 1.75; /* Increased line-height for body text */
   padding-top: 80px; /* Space for fixed navbar */
+  font-size: 16.5px; /* Slightly increased base font size */
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 0 2rem;
+  padding: 0 2.5rem; /* Increased side padding for container */
 }
 
 h1, h2, h3, h4 {
@@ -107,12 +108,13 @@ p.subtitle {
   color: var(--font-color);
   font-weight: 500;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease; /* Added transform transition */
 }
 
 .navbar .nav-links li a.active,
 .navbar .nav-links li a:hover {
   color: var(--primary-color);
+  transform: scale(1.05); /* Subtle scale effect on hover/active */
 }
 
 .navbar .nav-links li a::after {
@@ -124,12 +126,13 @@ p.subtitle {
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--primary-color);
-    transition: width 0.3s ease;
+    transition: width 0.3s ease, background-color 0.3s ease; /* Added background-color transition */
 }
 
 .navbar .nav-links li a:hover::after,
 .navbar .nav-links li a.active::after {
     width: 60%;
+    background-color: var(--primary-color-darker); /* Darken underline on hover */
 }
 
 .social-links a {
@@ -203,32 +206,34 @@ p.subtitle {
 /* --- Sections --- */
 .section {
   padding: 6rem 0;
+  margin-bottom: 2rem; /* Added margin between sections */
 }
 .section-light {
   background-color: var(--surface-color);
+  padding: 6rem 2.5rem; /* Ensure padding is consistent with container */
 }
 
 /* --- Project/Experience Cards --- */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem; /* Increased gap between cards */
 }
 
 .card {
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 4px 10px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border-radius: 12px; /* Slightly increased border-radius */
+  padding: 2.5rem; /* Increased padding */
+  box-shadow: 0 5px 15px var(--shadow-color); /* Adjusted shadow */
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; /* Slightly adjusted transition */
   display: flex;
   flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px var(--shadow-color);
+  transform: translateY(-10px) scale(1.02); /* Added subtle scale effect */
+  box-shadow: 0 12px 30px rgba(0, 191, 165, 0.25); /* More prominent shadow with primary color hint */
   border-color: var(--primary-color);
 }
 
@@ -361,6 +366,18 @@ p.subtitle {
     line-height: 1;
 }
 
+/* --- Scroll Animations --- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* --- Footer --- */
 footer {
   text-align: center;
@@ -375,4 +392,105 @@ footer .social-links a {
 footer p {
     margin-top: 1.5rem;
     color: var(--font-color-muted);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hero {
+        padding: 3rem 2rem;
+    }
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px; /* Adjust for potentially smaller navbar */
+    }
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar .nav-links {
+        margin-top: 1rem;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar .nav-links li {
+        margin-bottom: 0.5rem;
+    }
+    .navbar .nav-links li a {
+        display: block;
+        padding: 0.8rem 0;
+    }
+    .navbar .social-links {
+        margin-top: 1rem;
+        margin-left: 0; /* Reset margin */
+    }
+    .navbar .social-links a {
+        margin-left: 0;
+        margin-right: 1.2rem;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+        padding: 3rem 1.5rem;
+    }
+    .hero-img {
+        margin-top: 2rem;
+        max-width: 300px; /* Control image size on mobile */
+    }
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 0 1.5rem; /* Adjust container padding for smaller screens */
+    }
+    .section, .section-light {
+        padding: 4rem 1.5rem;
+    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+
+    .card-grid {
+        grid-template-columns: 1fr; /* Stack cards on mobile */
+        gap: 2rem;
+    }
+    .card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15.5px; /* Slightly smaller base font for very small screens */
+    }
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    .btn {
+        display: block; /* Make buttons full width for easier tapping */
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    .btn:last-of-type {
+        margin-bottom: 0;
+    }
+    footer .social-links a {
+        font-size: 1.6rem;
+        margin: 0 0.8rem;
+    }
 }
